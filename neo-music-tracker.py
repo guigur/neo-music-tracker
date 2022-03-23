@@ -25,7 +25,7 @@ while(True):
         print("Adding to the database : '" + currentTitreNom + "' par : '" + currentArtisteNom + "'")
         conn = sqlite3.connect(dbname)
         timestamp = datetime.now()
-        conn.execute("INSERT INTO musique (titreNom,artisteNom,heureDiffusion) VALUES ('" + currentTitreNom + "', '" + currentArtisteNom + "', '" + str(timestamp) +"')");
+        conn.execute("insert into musique (titreNom,artisteNom,heureDiffusion) VALUES (?, ?, ?)", (currentTitreNom, currentArtisteNom, str(timestamp)))
         conn.commit()
         conn.close()
     else:
