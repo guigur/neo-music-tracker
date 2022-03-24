@@ -19,12 +19,12 @@ def stats_maker(request):
     conn = sqlite3.connect(dbname)
 
     cur = conn.cursor()
-    cur.execute("SELECT * FROM musique LIMIT 20")
+    cur.execute("SELECT * FROM musique LIMIT 20 ORDER BY palyed ASC")
 
     rows = cur.fetchall()
     tracks = []
 
     for row in rows:
-        tracks.append({'spotify': getIdFromSpotify(row[0] + ' ' + row[1]), 'trackName': row[0], 'artistName': row[1], 'played': row[2]})
+        tracks.append({'spotify': row[3], 'trackName': row[0], 'artistName': row[1], 'played': row[2]})
     
     return render(request, 'stats_maker.html', {'tracks': tracks})
