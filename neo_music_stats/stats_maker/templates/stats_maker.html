@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title></title>
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="icon" href="images/favicon.png" />
+    </head>
+
+    <body>
+        {% for track in tracks %}
+            {{track.trackName}}
+            {{track.artistName}}
+            {{track.played}}
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/{{track.spotify}}?utm_source=generator&theme=0" 
+            width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            <script src="js/scripts.js"></script>
+        {% endfor %}
+    </body>
+</html>
